@@ -5,52 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sel-maar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/04 13:59:52 by sel-maar          #+#    #+#             */
-/*   Updated: 2023/01/05 15:19:01 by sel-maar         ###   ########.fr       */
+/*   Created: 2023/01/06 17:18:26 by sel-maar          #+#    #+#             */
+/*   Updated: 2023/01/06 17:24:20 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
-#include <stdio.h>
-#include "get_next_line.h"
 #include "test.h"
 
-/*void	handle_sigint(int sig)
+void	oui(char **av)
 {
-		printf("dosminishell\n");
-}*/
-
-/*void	handle_sigquit(int sig)
-{
-	if (sig == EOF)
-			exit(0);
-}*/
-
-void handle_sigquit(int sig)
-{
-}
-void handle_sigint(int sig)
-{
-    printf("\ndossminishell ");
+	av++;
 }
 
-int	main(void)
+int main(int ac, char **av)
 {
-	char	*s;
-
-	signal(SIGINT, handle_sigint);
-	signal(SIGQUIT, handle_sigquit);
-//	signal(SIGQUIT, handle_sigquit);
-	while(1)
-	{
-		s = get_next_line(0);
-		if (!ft_strchr(s, EOF))
-		{
-			free(s);
-			break;
-		}
-		ft_hublexer(s);
-		free(s)
-	}	
+	char **oi = av;
+	oui(av);
+		printf("%s", *oi);
 	return (0);
 }
