@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.h                                             :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmourtia <vmourtia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/04 14:41:11 by sel-maar          #+#    #+#             */
-/*   Updated: 2023/01/10 15:54:47 by vmourtia         ###   ########.fr       */
+/*   Created: 2023/01/11 14:36:38 by vmourtia          #+#    #+#             */
+/*   Updated: 2023/01/11 16:07:56 by vmourtia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_H
-# define TEST_H
-# include <stdio.h>
-# include <stddef.h>
-# include <stdlib.h>
+#include "lexer.h"
 
-typedef struct s_tok
+int	main(int ac, char **av)
 {
-	char			*cmd;
-	char			**arg;
-	struct s_tok	*next;
-}	t_tok;
+	char	*cmd;
 
-size_t	ft_strlen(char *s);
-char	**ft_split(char *s, char c);
-void	ft_clearsplit(char **s);
-int		ft_lexer(char **splited,t_tok *tokens);
-/*void	ft_add_opt_arg(tokens, splited);
-void	ft_tokaddback(tokens, splited);*/
-#endif
+	if (ac == 2)
+	{
+		cmd = av[1];
+		while (*cmd)
+		{
+			while (is_separator(*cmd))
+				cmd++;
+			//if (is_special(*cmd))
+				//hubspecial(&cmd);
+			//printf("%s\n", retrieve_element(&cmd));
+			get_next_token(&cmd);
+		}
+	}
+	return (0);
+}

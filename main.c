@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sel-maar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vmourtia <vmourtia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 13:59:52 by sel-maar          #+#    #+#             */
-/*   Updated: 2023/01/05 15:19:01 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/01/10 15:57:36 by vmourtia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,11 @@
 
 void handle_sigquit(int sig)
 {
+	(void)sig;
 }
 void handle_sigint(int sig)
 {
+	(void)sig;
     printf("\ndossminishell ");
 }
 
@@ -49,8 +51,7 @@ int	main(void)
 			free(s);
 			break;
 		}
-		ft_hublexer(s);
-		free(s)
+		free(s);
 	}	
 	return (0);
 }

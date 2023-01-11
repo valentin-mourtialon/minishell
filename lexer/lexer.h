@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.h                                             :+:      :+:    :+:   */
+/*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmourtia <vmourtia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/04 14:41:11 by sel-maar          #+#    #+#             */
-/*   Updated: 2023/01/10 15:54:47 by vmourtia         ###   ########.fr       */
+/*   Created: 2023/01/11 12:23:07 by vmourtia          #+#    #+#             */
+/*   Updated: 2023/01/11 16:07:21 by vmourtia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_H
-# define TEST_H
-# include <stdio.h>
-# include <stddef.h>
+#ifndef LEXER_H
+# define LEXER_H
+
 # include <stdlib.h>
+# include <stdio.h>
 
-typedef struct s_tok
-{
-	char			*cmd;
-	char			**arg;
-	struct s_tok	*next;
-}	t_tok;
+typedef struct s_lexer {
+	int				token;
+	char			*str;
+	struct s_lexer	*next;
+} t_lexer;
 
-size_t	ft_strlen(char *s);
-char	**ft_split(char *s, char c);
-void	ft_clearsplit(char **s);
-int		ft_lexer(char **splited,t_tok *tokens);
-/*void	ft_add_opt_arg(tokens, splited);
-void	ft_tokaddback(tokens, splited);*/
+int		is_special(char c);
+int		is_separator(char c);
+char	*retrieve_element(char **ptr);
+int		get_next_token(char **cmd);
+
 #endif
