@@ -6,7 +6,7 @@
 /*   By: vmourtia <vmourtia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:36:38 by vmourtia          #+#    #+#             */
-/*   Updated: 2023/01/12 16:39:43 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/01/13 14:40:30 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,16 @@ int	main()
 {
 	char	*cmd;
 	char	*ptrstart;
-	
-	cmd = readline("lexer ");
-	ptrstart = cmd;
-	while (*cmd)
-		get_next_token(&cmd);
-	free(ptrstart);
+	t_lexer *lexer;
+	while (1)
+	{		
+		cmd = readline("lexer ");
+		ptrstart = cmd;
+		lexer = NULL;
+		while (*cmd)
+			get_next_token(&cmd, &lexer);
+		free(ptrstart);
+		print_token(lexer);
+	}
 	return (0);
 }

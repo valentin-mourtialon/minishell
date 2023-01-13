@@ -6,7 +6,7 @@
 /*   By: vmourtia <vmourtia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:03:03 by vmourtia          #+#    #+#             */
-/*   Updated: 2023/01/12 18:06:25 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/01/13 14:40:48 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,49 +72,30 @@ char	*retrieve_element(char **ptr)
 char	*consume_special(char **cmd)
 {
 	char	*stringspecial;
-	char	c;
-	int		i;
-	int		len;
 
-	c = **cmd;
-	i = 0;
-	len = 0;
-	//printf("bonjour");
-	while ((*cmd)[len] && (*cmd)[len] == c)
-		len++;
-	stringspecial = malloc(sizeof(char) * (len + 1));
+	stringspecial = malloc(sizeof(char) * 2);
 	if (!stringspecial)
 		return (NULL);
-	stringspecial[len] = '\0';
-	while (i < len)
-	{
-		stringspecial[i] = **cmd;
-		(*cmd)++;
-		i++;
-	}
+	stringspecial[0] = **cmd;
+	stringspecial[1] = '\0';
+	(*cmd)++;
 	return (stringspecial);
 }
 
-int	get_next_token(char **cmd)//, t_lexer **lexer)
+int	get_next_token(char **cmd, t_lexer **lexer)//, t_lexer **lexer)
 {
 	char	*element;
-	//t_lexer	*token;
+	t_lexer	*token;
 
-	//token = NULL;
+	token = NULL;
 	while (is_separator(**cmd))
 		(*cmd)++;
 	if (is_special(**cmd))
 		element = consume_special(cmd);
 	else
 		element = retrieve_element(cmd);
-	if (element)
-	{
-		printf("%s\t", element);
-		printf("%d\n", findtoken(element));
-		free(element);//a enlever
-	}
-	//token = newtoken(findtoken(element), element);
-	//add_back(lexer, token);
+	token = newtoken(findtoken(element), element);
+	addback(lexer, token);
 	return (0);
 }
 

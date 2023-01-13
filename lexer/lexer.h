@@ -6,7 +6,7 @@
 /*   By: vmourtia <vmourtia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:23:07 by vmourtia          #+#    #+#             */
-/*   Updated: 2023/01/12 18:20:53 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/01/13 14:55:53 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,19 @@ typedef struct s_lexer {
 typedef enum e_token_type {
 	T_WORD,
 	T_INF,
-	T_HEREDOC,
 	T_SUP,
-	T_REDIRECT_OUT_APPEND,
 	T_PIPE,
 	T_ASSIGNMENT,
 	T_DOLLAR,
 	T_QUOTE_DOUBLE,
 	T_QUOTE_SIMPLE,
-	T_CTRLC,
-	T_CTRLD,
-	T_CTRLBACKSLASH
 }	t_lexeren_type;
 
 /* main.c */
 int			is_special(char c);
 int			is_separator(char c);
 char		*retrieve_element(char **ptr);
-int			get_next_token(char **cmd);
+int			get_next_token(char **cmd, t_lexer **lexer);
 
 /* findtoken.c */
 int			is_inf(char *element);
@@ -53,9 +48,13 @@ int			is_sup(char *element);
 int			is_pipe(char *element);
 int			is_assignement(char *element);
 int			is_dollar(char *element);
+int			is_double(char *element);
+int			is_simple(char *element);
+int			is_word(char *element);
 
 /* token.c */
 int			findtoken(char *cmd);
+void		print_token(t_lexer *lexer);
 t_lexer		*ft_lexerlast(t_lexer *tokens);
 t_lexer		*newtoken(int token, char *cmd);
 void		addback(t_lexer **tokens, t_lexer *new);

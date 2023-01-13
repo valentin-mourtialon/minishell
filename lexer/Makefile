@@ -6,7 +6,7 @@
 #    By: sel-maar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/12 15:05:42 by sel-maar          #+#    #+#              #
-#    Updated: 2023/01/12 18:28:05 by sel-maar         ###   ########.fr        #
+#    Updated: 2023/01/13 11:02:44 by sel-maar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ SRCS = 		main.c \
 	   		test.c \
 			token.c \
 			findtoken.c \
+			findtoken2.c \
 			libft.c \
 
 HEADER = 	lexer.h

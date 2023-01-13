@@ -6,7 +6,7 @@
 /*   By: sel-maar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:44:22 by sel-maar          #+#    #+#             */
-/*   Updated: 2023/01/12 18:20:06 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/01/13 14:58:08 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 int	findtoken(char *cmd)
 {
-	int	(*functions[5])(char*)
-		   	= {is_sup, is_inf, is_pipe, is_assignement, is_dollar};
+	int	(*functions[8])(char*)
+		= {is_sup, is_inf, is_pipe, is_assignement,
+			is_dollar, is_simple, is_double, is_word};
 	int	i;
 
 	i = 0;
-	while (i < 5)
+	while (i < 8)
 	{
-		if(functions[i](cmd) >= 0)
+		if (functions[i](cmd) >= 0)
 			return (functions[i](cmd));
 		i++;
 	}
@@ -58,5 +59,14 @@ void	addback(t_lexer **tokens, t_lexer *new)
 			(*ft_lexerlast(*tokens)).next = new;
 		else
 			*tokens = new;
+	}
+}
+
+void	print_token(t_lexer *lexer)
+{
+	while (lexer)
+	{
+		printf("%d\t%s\n", lexer->token, lexer->str);
+		lexer = lexer->next;
 	}
 }
