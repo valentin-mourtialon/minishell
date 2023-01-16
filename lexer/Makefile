@@ -6,22 +6,31 @@
 #    By: sel-maar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/12 15:05:42 by sel-maar          #+#    #+#              #
-#    Updated: 2023/01/13 11:02:44 by sel-maar         ###   ########.fr        #
+#    Updated: 2023/01/16 13:09:20 by sel-maar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = 		main.c \
-	   		test.c \
-			token.c \
-			findtoken.c \
-			findtoken2.c \
-			libft.c \
+FINDTOKEN =	findtoken/issimple.c \
+			findtoken/isdouble.c \
+			findtoken/isword.c \
+			findtoken/ispipe.c \
+			findtoken/isdollar.c \
+			findtoken/isinf.c \
+			findtoken/issup.c \
+			findtoken/isassignement.c \
 
-HEADER = 	lexer.h
+LIBFT =		libft\ft_strlen.c
+
+MAIN = 		get_next_token.c \
+			token.c \
+	   		main.c \
+			ft_strlen.c\
+
+INCLUDES = 	-I./findtoken/ -I./
 
 NAME = 		lexer
 
-OBJS = 		${SRCS:c=o}
+OBJS = 		${MAIN:c=o} ${FINDTOKEN:c=o}
 
 CC = 		gcc
 
@@ -40,20 +49,20 @@ all :		${NAME}
 vg :		${CRAKITO}
 
 %.o : %.c
-			${CC} ${CFLAGS} ${INC} -c $< -o $@ -g
+			${CC} ${CFLAGS} ${INCLUDES} -c $< -o $@ -g
 
 
 ${NAME} :	${OBJS}
 			${CC} ${OBJS} -o ${NAME} ${READLINE}
-
-CRAKITO :	${OBJS}
-			${VGRD} ${CC} ${OBJS} -o lexer ${READLINE}
 
 clean :
 			${RM} ${OBJS}
 
 fclean :	clean
 			${RM} ${NAME}
+
+samisupp :
+			${VGRD} ./${NAME}
 
 re :		fclean all
 

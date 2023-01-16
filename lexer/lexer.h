@@ -6,13 +6,15 @@
 /*   By: vmourtia <vmourtia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:23:07 by vmourtia          #+#    #+#             */
-/*   Updated: 2023/01/13 14:55:53 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/01/16 13:08:10 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEXER_H
 # define LEXER_H
 
+# include "libft/libft.h"
+# include "findtoken/findtoken.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
@@ -42,16 +44,6 @@ int			is_separator(char c);
 char		*retrieve_element(char **ptr);
 int			get_next_token(char **cmd, t_lexer **lexer);
 
-/* findtoken.c */
-int			is_inf(char *element);
-int			is_sup(char *element);
-int			is_pipe(char *element);
-int			is_assignement(char *element);
-int			is_dollar(char *element);
-int			is_double(char *element);
-int			is_simple(char *element);
-int			is_word(char *element);
-
 /* token.c */
 int			findtoken(char *cmd);
 void		print_token(t_lexer *lexer);
@@ -59,7 +51,6 @@ t_lexer		*ft_lexerlast(t_lexer *tokens);
 t_lexer		*newtoken(int token, char *cmd);
 void		addback(t_lexer **tokens, t_lexer *new);
 
-/*libft.c*/
+/*a regler*/
 int			ft_strlen(char *s);
-
 #endif
