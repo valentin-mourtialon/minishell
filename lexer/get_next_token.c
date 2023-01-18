@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_token.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmourtia <vmourtia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:03:03 by vmourtia          #+#    #+#             */
-/*   Updated: 2023/01/13 14:40:48 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/01/17 15:25:41 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,13 @@ int	is_separator(char c)
 
 int	is_special(char c)
 {
-	const int	specials[10]
-		= {'|', '>', '<', '"', '\n', '\'', '$', '{', '}', '"'};
+	const int	specials[15]
+		= {'|', '>', '<', '"', '\n', '\'', '$', '{', '}'
+			, '"', '\t', ' ', '\v', '\r', '\f'};
 	int			i;
 
 	i = 0;
-	while (i < 10)
+	while (i < 15)
 	{
 		if (c == specials[i])
 			return (specials[i]);
@@ -88,8 +89,6 @@ int	get_next_token(char **cmd, t_lexer **lexer)//, t_lexer **lexer)
 	t_lexer	*token;
 
 	token = NULL;
-	while (is_separator(**cmd))
-		(*cmd)++;
 	if (is_special(**cmd))
 		element = consume_special(cmd);
 	else

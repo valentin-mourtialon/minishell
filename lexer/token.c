@@ -6,7 +6,7 @@
 /*   By: sel-maar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:44:22 by sel-maar          #+#    #+#             */
-/*   Updated: 2023/01/13 14:58:08 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/01/17 15:19:09 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int	findtoken(char *cmd)
 {
-	int	(*functions[8])(char*)
-		= {is_sup, is_inf, is_pipe, is_assignement,
+	int	(*functions[9])(char*)
+		= {is_sup, is_inf, is_pipe, is_assignement, is_sep,
 			is_dollar, is_simple, is_double, is_word};
 	int	i;
 
 	i = 0;
-	while (i < 8)
+	while (i < 9)
 	{
 		if (functions[i](cmd) >= 0)
 			return (functions[i](cmd));

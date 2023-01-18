@@ -6,7 +6,7 @@
 /*   By: vmourtia <vmourtia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:23:07 by vmourtia          #+#    #+#             */
-/*   Updated: 2023/01/16 13:08:10 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/01/17 15:20:02 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <signal.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 
@@ -36,6 +37,7 @@ typedef enum e_token_type {
 	T_DOLLAR,
 	T_QUOTE_DOUBLE,
 	T_QUOTE_SIMPLE,
+	T_SEP,
 }	t_lexeren_type;
 
 /* main.c */
@@ -50,7 +52,10 @@ void		print_token(t_lexer *lexer);
 t_lexer		*ft_lexerlast(t_lexer *tokens);
 t_lexer		*newtoken(int token, char *cmd);
 void		addback(t_lexer **tokens, t_lexer *new);
+/*signal.c*/
+void	handle_sigquit(int);
 
 /*a regler*/
 int			ft_strlen(char *s);
+char		*ft_strchr(char *s, char c);
 #endif

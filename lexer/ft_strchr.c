@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmourtia <vmourtia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sel-maar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 14:36:38 by vmourtia          #+#    #+#             */
-/*   Updated: 2023/01/13 14:40:30 by sel-maar         ###   ########.fr       */
+/*   Created: 2023/01/17 13:54:51 by sel-maar          #+#    #+#             */
+/*   Updated: 2023/01/17 13:56:20 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <lexer.h>
-
-int	main()
+char	*ft_strchr(char *s, int c)
 {
-	char	*cmd;
-	char	*ptrstart;
-	t_lexer *lexer;
-	while (1)
-	{		
-		cmd = readline("lexer ");
-		ptrstart = cmd;
-		lexer = NULL;
-		while (*cmd)
-			get_next_token(&cmd, &lexer);
-		free(ptrstart);
-		print_token(lexer);
+	int		i;
+	char	*pt;
+
+	i = 0;
+	if (!s)
+		return (0);
+	if (c > 256)
+		c %= 256;
+	while (s[i])
+	{
+		if (s[i] == c)
+		{
+			pt = &s[i];
+			return (pt);
+		}
+		i++;
+	}
+	if (s[i] == c)
+	{
+		pt = &s[i];
+		return (pt);
 	}
 	return (0);
 }

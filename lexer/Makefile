@@ -6,7 +6,7 @@
 #    By: sel-maar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/12 15:05:42 by sel-maar          #+#    #+#              #
-#    Updated: 2023/01/16 13:09:20 by sel-maar         ###   ########.fr        #
+#    Updated: 2023/01/17 15:20:53 by sel-maar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ FINDTOKEN =	findtoken/issimple.c \
 			findtoken/isinf.c \
 			findtoken/issup.c \
 			findtoken/isassignement.c \
+			findtoken/is_sep.c \
 
 LIBFT =		libft\ft_strlen.c
 
@@ -25,6 +26,8 @@ MAIN = 		get_next_token.c \
 			token.c \
 	   		main.c \
 			ft_strlen.c\
+			ft_strchr.c\
+			signal.c\
 
 INCLUDES = 	-I./findtoken/ -I./
 

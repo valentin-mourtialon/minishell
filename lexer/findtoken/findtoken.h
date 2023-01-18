@@ -6,7 +6,7 @@
 /*   By: sel-maar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:34:03 by sel-maar          #+#    #+#             */
-/*   Updated: 2023/01/16 12:37:56 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/01/17 15:18:39 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ int	is_simple(char *cmd);
 int	is_double(char *cmd);
 int	is_dollar(char *cmd);
 int	is_pipe(char *cmd);
+int	is_sep(char *cmd);
 
 #endif
