@@ -6,17 +6,17 @@
 /*   By: vmourtia <vmourtia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:36:38 by vmourtia          #+#    #+#             */
-/*   Updated: 2023/01/18 12:48:31 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/01/19 12:09:28 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lexer.h>
 
-int	main()
+int	main(void)
 {
 	char	*cmd;
 	char	*ptrstart;
-	t_lexer *lexer;
+	t_lexer	*lexer;
 
 	signal(SIGINT, handle_sigquit);
 	signal(SIGQUIT, SIG_IGN);
@@ -29,6 +29,7 @@ int	main()
 		lexer = NULL;
 		while (*cmd)
 			get_next_token(&cmd, &lexer);
+		parser(&lexer);
 		free(ptrstart);
 		print_token(lexer);
 	}

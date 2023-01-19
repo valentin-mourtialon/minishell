@@ -6,19 +6,31 @@
 /*   By: sel-maar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:44:22 by sel-maar          #+#    #+#             */
-/*   Updated: 2023/01/17 15:19:09 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/01/19 12:00:28 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lexer.h>
 
+void	init_tab(int (**f)(char*))
+{
+	f[0] = &is_sup;
+	f[1] = &is_inf;
+	f[2] = &is_pipe;
+	f[3] = &is_assignement;
+	f[4] = &is_sep;
+	f[5] = &is_dollar;
+	f[6] = &is_simple;
+	f[7] = &is_double;
+	f[8] = &is_word;
+}
+
 int	findtoken(char *cmd)
 {
-	int	(*functions[9])(char*)
-		= {is_sup, is_inf, is_pipe, is_assignement, is_sep,
-			is_dollar, is_simple, is_double, is_word};
+	int	(*functions[9])(char*);
 	int	i;
 
+	init_tab(functions);
 	i = 0;
 	while (i < 9)
 	{
