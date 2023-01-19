@@ -1,56 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sel-maar <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vmourtia <vmourtia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/04 13:59:52 by sel-maar          #+#    #+#             */
-/*   Updated: 2023/01/05 15:19:01 by sel-maar         ###   ########.fr       */
+/*   Created: 2023/01/11 14:36:38 by vmourtia          #+#    #+#             */
+/*   Updated: 2023/01/18 12:48:31 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
-#include <stdio.h>
-#include "get_next_line.h"
-#include "test.h"
+#include <lexer.h>
 
-/*void	handle_sigint(int sig)
+int	main()
 {
-		printf("dosminishell\n");
-}*/
+	char	*cmd;
+	char	*ptrstart;
+	t_lexer *lexer;
 
-/*void	handle_sigquit(int sig)
-{
-	if (sig == EOF)
-			exit(0);
-}*/
-
-void handle_sigquit(int sig)
-{
-}
-void handle_sigint(int sig)
-{
-    printf("\ndossminishell ");
-}
-
-int	main(void)
-{
-	char	*s;
-
-	signal(SIGINT, handle_sigint);
-	signal(SIGQUIT, handle_sigquit);
-//	signal(SIGQUIT, handle_sigquit);
-	while(1)
+	signal(SIGINT, handle_sigquit);
+	signal(SIGQUIT, SIG_IGN);
+	while (1)
 	{
-		s = get_next_line(0);
-		if (!ft_strchr(s, EOF))
-		{
-			free(s);
-			break;
-		}
-		ft_hublexer(s);
-		free(s)
-	}	
+		cmd = readline("lexer ");
+		if (!cmd)
+			break ;
+		ptrstart = cmd;
+		lexer = NULL;
+		while (*cmd)
+			get_next_token(&cmd, &lexer);
+		free(ptrstart);
+		print_token(lexer);
+	}
 	return (0);
 }

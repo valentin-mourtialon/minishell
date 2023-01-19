@@ -6,30 +6,30 @@
 #    By: sel-maar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/12 15:05:42 by sel-maar          #+#    #+#              #
-#    Updated: 2023/01/17 15:20:53 by sel-maar         ###   ########.fr        #
+#    Updated: 2023/01/19 10:22:05 by sel-maar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FINDTOKEN =	findtoken/issimple.c \
-			findtoken/isdouble.c \
-			findtoken/isword.c \
-			findtoken/ispipe.c \
-			findtoken/isdollar.c \
-			findtoken/isinf.c \
-			findtoken/issup.c \
-			findtoken/isassignement.c \
-			findtoken/is_sep.c \
+FINDTOKEN =	lex/findtoken/issimple.c \
+			lex/findtoken/isdouble.c \
+			lex/findtoken/isword.c \
+			lex/findtoken/ispipe.c \
+			lex/findtoken/isdollar.c \
+			lex/findtoken/isinf.c \
+			lex/findtoken/issup.c \
+			lex/findtoken/isassignement.c \
+			lex/findtoken/is_sep.c \
 
-LIBFT =		libft\ft_strlen.c
+LIBFT =		lex/ft_strlen.c \
 
-MAIN = 		get_next_token.c \
-			token.c \
-	   		main.c \
-			ft_strlen.c\
-			ft_strchr.c\
-			signal.c\
+MAIN = 		main.c \
+			lex/get_next_token.c \
+			lex/token.c \
+			lex/ft_strlen.c \
+			lex/ft_strchr.c \
+			lex/signal.c \
 
-INCLUDES = 	-I./findtoken/ -I./
+INCLUDES = 	-I./lex/findtoken/ -I./lex/
 
 NAME = 		lexer
 
