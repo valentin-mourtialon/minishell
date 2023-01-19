@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   isassignement.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmourtia <vmourtia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sel-maar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/06 17:18:26 by sel-maar          #+#    #+#             */
-/*   Updated: 2023/01/10 15:51:59 by vmourtia         ###   ########.fr       */
+/*   Created: 2023/01/16 12:04:58 by sel-maar          #+#    #+#             */
+/*   Updated: 2023/01/16 12:33:11 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-#include "test.h"
+#include <findtoken.h>
 
-void	oui(char **av)
+int	is_assignement(char *element)
 {
-	av++;
+	if (ft_strlen(element) == 1 && element[0] == '=')
+		return (T_ASSIGNMENT);
+	else
+		return (-1);
 }
-
-int main(int ac, char **av)
-{
-	char **oi = av;
-	oui(av);
-		printf("%s", *oi);
-	return (0);
-}*/

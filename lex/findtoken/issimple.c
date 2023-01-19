@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlen.c                                           :+:      :+:    :+:   */
+/*   issimple.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sel-maar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/06 15:32:55 by sel-maar          #+#    #+#             */
-/*   Updated: 2023/01/06 15:35:05 by sel-maar         ###   ########.fr       */
+/*   Created: 2023/01/16 12:06:25 by sel-maar          #+#    #+#             */
+/*   Updated: 2023/01/16 12:40:22 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test.h"
+#include <findtoken.h>
 
-size_t	ft_strlen(char *s)
+int	is_simple(char *element)
 {
-	int	i;
-	
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
-		i++;
-	return (i);
+	if (ft_strlen(element) == 1 && element[0] == '\'')
+		return (T_QUOTE_SIMPLE);
+	else
+		return (-1);
 }
