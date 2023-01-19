@@ -6,20 +6,16 @@
 /*   By: vmourtia <vmourtia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:03:03 by vmourtia          #+#    #+#             */
-/*   Updated: 2023/01/11 16:51:03 by vmourtia         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:10:02 by vmourtia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
 
-int	is_separator(char c)
+int	is_separator(char c, char *separators)
 {
-	char	separators[3];
 	int		i;
 
-	separators[0] = ' ';
-	separators[1] = '\t';
-	separators[2] = '\0';
 	i = 0;
 	while (separators[i])
 	{
@@ -30,9 +26,8 @@ int	is_separator(char c)
 	return (0);
 }
 
-int	is_special(char c)
+int	is_special(char c, char *specials)
 {
-	char	*specials = "|><\n\"\'${}";
 	while (*specials)
 	{
 		if (c == *specials)
@@ -52,7 +47,7 @@ char	*retrieve_element(char **ptr)
 	len = 0;
 	if (!ptr)
 		return (NULL);
-	while ((*ptr)[len] && !is_separator((*ptr)[len]) && !is_special((*ptr)[len]))
+	while ((*ptr)[len] && !is_separator((*ptr)[len], " \t") && !is_special((*ptr)[len], "|><\n\"\'${}"))
 		len++;
 	element = malloc(sizeof(char) * len + 1);
 	if (!element)
