@@ -6,7 +6,7 @@
 /*   By: vmourtia <vmourtia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:36:38 by vmourtia          #+#    #+#             */
-/*   Updated: 2023/01/19 12:09:28 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/01/19 15:08:38 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	main(void)
 		lexer = NULL;
 		while (*cmd)
 			get_next_token(&cmd, &lexer);
-		parser(&lexer);
 		free(ptrstart);
 		print_token(lexer);
 	}

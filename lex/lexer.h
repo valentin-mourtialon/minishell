@@ -6,14 +6,13 @@
 /*   By: vmourtia <vmourtia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:23:07 by vmourtia          #+#    #+#             */
-/*   Updated: 2023/01/19 12:05:30 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/01/20 11:31:05 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEXER_H
 # define LEXER_H
 
-# include "libft/libft.h"
 # include "findtoken/findtoken.h"
 # include <stdlib.h>
 # include <stdio.h>
@@ -38,6 +37,9 @@ typedef enum e_token_type {
 	T_QUOTE_DOUBLE,
 	T_QUOTE_SIMPLE,
 	T_SEP,
+	//token suplementaire pour le parsing
+	T_HERDOC,
+	T_REDIRECT,
 }	t_lexeren_type;
 
 /* main.c */
