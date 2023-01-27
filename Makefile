@@ -6,7 +6,7 @@
 #    By: vmourtia <vmourtia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/12 15:05:42 by sel-maar          #+#    #+#              #
-#    Updated: 2023/01/25 14:05:12 by sel-maar         ###   ########.fr        #
+#    Updated: 2023/01/27 15:17:50 by sel-maar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,8 @@ PARSER_SRCS = 	parser/parser.c \
 				parser/word.c \
 				parser/block.c \
 				parser/freeblock.c \
+				parser/env.c \
+				parser/envmove.c \
 				main_parser.c \
 
 LIBFT_SRCS =	libft/ft_strlen.c \

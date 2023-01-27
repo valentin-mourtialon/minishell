@@ -6,7 +6,7 @@
 /*   By: vmourtia <vmourtia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:23:07 by vmourtia          #+#    #+#             */
-/*   Updated: 2023/01/24 15:30:58 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:47:11 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ t_lexer		*ft_lexerlast(t_lexer *tokens);
 t_lexer		*newtoken(int token, char *cmd);
 void		addback(t_lexer **tokens, t_lexer *new);
 t_lexer		*parcour_lexer(t_lexer *lexer, int i);
+void		freelexer(t_lexer **lexer);
 /*signal.c*/
 void		handle_sigquit(int d);
 

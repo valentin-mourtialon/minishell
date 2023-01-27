@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   freeblock.c                                        :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sel-maar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 13:48:32 by sel-maar          #+#    #+#             */
-/*   Updated: 2023/01/27 14:54:36 by sel-maar         ###   ########.fr       */
+/*   Created: 2023/01/26 16:47:11 by sel-maar          #+#    #+#             */
+/*   Updated: 2023/01/27 14:19:21 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <parser.h>
 
-void	freeblock(t_parser *parser)
+void	copyenv(t_env **env, char **realenv)
 {
-		t_parser	*tmp;
+	t_env	*tmp;
 
-		while(parser)
-		{
-			tmp = parser;
-			freelexer(&tmp->nexttoken);
-			parser = parser->nextblock;
-			free(tmp);
-		}
+	while (*realenv)
+	{
+		tmp = newenv(*realenv);
+		envaddback(env, tmp);;
+		realenv++;
+	}
+	print_env(*env);
 }

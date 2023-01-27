@@ -16,11 +16,11 @@ t_parser	*newblock(int block, t_lexer **token)
 {
 	t_parser	*newblock;
 
-	newblock = malloc(sizeof(t_parser *));
+	newblock = malloc(sizeof(t_parser));
 	if (newblock == NULL)
 		return (NULL);
 	newblock->block = block; //type de cmd (redirection cmd simple ect.....)
-	newblock->nexttoken = *token;//ici les nouveau token "raffiner" exemple: QUOTE WORD SEP SEP WORD -> WORD
+	newblock->nexttoken = *token;//ici les nouveau token "raffines" exemple: QUOTE WORD SEP SEP WORD -> WORD
 	newblock->nextblock = NULL; //le block suivant
 	return (newblock);
 }

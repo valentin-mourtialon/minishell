@@ -6,7 +6,7 @@
 /*   By: sel-maar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:44:22 by sel-maar          #+#    #+#             */
-/*   Updated: 2023/01/25 13:43:34 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:46:31 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,23 +87,15 @@ void	print_token(t_lexer *lexer)
 	}
 }
 
-t_lexer	*parcour_lexer(t_lexer *lexer, int i)
+void	freelexer(t_lexer **lexer)
 {
-	if (i < 0)
+	t_lexer *tmp;
+
+	while (*lexer)
 	{
-		while (i != 0)
-		{
-		//	lexer = lexer->previous;
-			i++;
-		}
+		tmp = *lexer;
+		*lexer = (*lexer)->next;
+		free(tmp->str);
+		free(tmp);
 	}
-	else if (i > 0)
-	{
-		while (i != 0)
-		{
-			lexer = lexer->next;
-			i--;
-		}
-	}
-	return (lexer);
 }

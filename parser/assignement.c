@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   freeblock.c                                        :+:      :+:    :+:   */
+/*   assignement.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sel-maar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 13:48:32 by sel-maar          #+#    #+#             */
-/*   Updated: 2023/01/27 14:54:36 by sel-maar         ###   ########.fr       */
+/*   Created: 2023/01/27 10:38:06 by sel-maar          #+#    #+#             */
+/*   Updated: 2023/01/27 14:07:30 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <parser.h>
-
-void	freeblock(t_parser *parser)
+int	assignement(t_lexer **lexer, t_parser **parser, t_env **env)
 {
-		t_parser	*tmp;
+	t_lexer	*start;
 
-		while(parser)
-		{
-			tmp = parser;
-			freelexer(&tmp->nexttoken);
-			parser = parser->nextblock;
-			free(tmp);
-		}
+	start = *lexer;
+	if (!(start->previous) && start->previous != T_WORD)
+			return (0);
+	*lexer = (*lexer)->next;
+	if ((*lexer)->token == T_DOLLAR)
+		dollar;
+	else if ((*lexer)->token == T_QUOTE_SIMPLE)
+		simplequote;
+	else if ((*lexer)->token == T_QUOTE_DOUBLE)
+		doublequote;
+	return (1);
 }
