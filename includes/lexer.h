@@ -6,7 +6,7 @@
 /*   By: vmourtia <vmourtia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:23:07 by vmourtia          #+#    #+#             */
-/*   Updated: 2023/01/27 14:47:11 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/01/31 16:52:09 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void		handle_sigquit(int d);
 
 /*a regler*/
 int			ft_strlen(char *s);
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
 char		*ft_strchr(char *s, char c);
 char		*ft_strjoin(char *mem_line, char *buff);
+char		*ft_strdup(char *s);
 #endif

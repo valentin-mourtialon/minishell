@@ -6,7 +6,7 @@
 /*   By: vmourtia <vmourtia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:36:38 by vmourtia          #+#    #+#             */
-/*   Updated: 2023/01/27 15:21:58 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/02/02 17:39:48 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	main(int ac, char **av, char **env)
 		printf("\n\n--------------------------\n\n");
 
 		parser = ft_parser(&lexer, &listenv);
+		print_block(parser);
 		if (parser)
 			freeblock(parser);
 		if (ptrstart)

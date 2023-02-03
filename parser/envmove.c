@@ -6,7 +6,7 @@
 /*   By: sel-maar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 16:59:50 by sel-maar          #+#    #+#             */
-/*   Updated: 2023/01/27 13:47:16 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/01/30 14:41:20 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	envaddbackarg(t_env **envs, t_env *new)
 	if (envs)
 	{
 		if (*envs)
-			(*ft_envlast(*envs)).nextarg = new;
+			(*ft_envlastarg(*envs)).nextarg = new;
 		else
 			*envs = new;
 	}

@@ -6,7 +6,7 @@
 #    By: vmourtia <vmourtia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/12 15:05:42 by sel-maar          #+#    #+#              #
-#    Updated: 2023/01/27 15:17:50 by sel-maar         ###   ########.fr        #
+#    Updated: 2023/02/02 17:34:52 by sel-maar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,10 @@ LEXER_SRCS =	lexer/findtoken/issimple.c \
 
 PARSER_SRCS = 	parser/parser.c \
 				parser/simplequote.c \
+				parser/doubleq.c \
+				parser/pipe.c \
+				parser/assignement.c \
+				parser/dollar.c \
 				parser/sep.c \
 				parser/word.c \
 				parser/block.c \
@@ -36,6 +40,8 @@ PARSER_SRCS = 	parser/parser.c \
 LIBFT_SRCS =	libft/ft_strlen.c \
 				libft/ft_strchr.c \
 				libft/ft_strjoin.c \
+				libft/strncmp.c \
+				libft/str_dup.c \
 
 INCLUDES = 		-I./includes
 

@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sep.c                                              :+:      :+:    :+:   */
+/*   strncmp.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sel-maar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/24 14:31:05 by sel-maar          #+#    #+#             */
-/*   Updated: 2023/02/03 11:14:31 by sel-maar         ###   ########.fr       */
+/*   Created: 2023/01/31 16:50:14 by sel-maar          #+#    #+#             */
+/*   Updated: 2023/01/31 16:51:15 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <parser.h>
+#include <lexer.h>
 
-int	sep(t_lexer **lexer, t_parser **parser, t_env **env)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	t_lexer	*tmp;
-	t_lexer *start;
-	(void)env;
-	
-	if ((*lexer)->previous)
+	size_t	i;
+
+	i = 0;
+	while (i < n && (s1[i] || s2[i]))
 	{
-		(*lexer)->previous->next = (*lexer)->next;
-		start = (*lexer)->previous;
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
 	}
-	else
-	{
-		(*parser)->nexttoken = (*lexer)->next;
-		start = NULL;
-	}
-	tmp = *lexer;
-	*lexer = (*lexer)->next;
-	if (*lexer)
-		(*lexer)->previous = start;
-	deltoken(tmp);
-	return (1);
+	return (0);
 }

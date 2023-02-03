@@ -6,7 +6,7 @@
 /*   By: vmourtia <vmourtia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:25:09 by sel-maar          #+#    #+#             */
-/*   Updated: 2023/01/27 15:20:43 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/02/03 11:55:50 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_parser	*ft_parser(t_lexer **lexer, t_env **env);
 t_parser	*newblock(int block, t_lexer **token);
 void		print_block(t_parser *parser);
 void		cut_lexer(t_lexer **index);
+t_parser	*ft_parserlast(t_parser *block);
 
 /* freeblock.c */
 void		freeblock(t_parser *parser);
@@ -46,12 +47,25 @@ void		addbackblock(t_parser **block, t_parser *new);
 
 /* envmove.c */
 void		print_env(t_env *lexer);
+void		print_envarg(t_env *lexer);
 void		envaddbackarg(t_env **envs, t_env *new);
 void		envaddback(t_env **envs, t_env *new);
 
 /* simplequote.c */
-int			replacequote(t_lexer **start, t_lexer **lexer, t_parser **parser, char *cmd);
+int			replace(t_lexer **start, t_lexer **lexer, t_parser **parser, char *cmd);
 int			simplequote(t_lexer **lexer, t_parser **parser, t_env **env);
+t_env		*newenv(char *cmd);
+void		deltoken(t_lexer *lexer);
+
+/* doublequote.c */
+int			doublequote(t_lexer **lexer, t_parser **parser, t_env **env);
+
+/*assignement.c*/
+int	assignement(t_lexer **lexer, t_parser **parser, t_env **env);
+
+/*dollar.c*/
+int			dollar(t_lexer **lexer, t_parser **parser, t_env **env);
+int			dollardouble(t_lexer **lexer, t_parser **parser, t_env **env);
 
 /* sep.c */
 int			sep(t_lexer **lexer, t_parser **parsert, t_env **env);
@@ -59,5 +73,7 @@ int			sep(t_lexer **lexer, t_parser **parsert, t_env **env);
 /* word.c */
 int			word(t_lexer **lexer, t_parser **parser, t_env **env);
 
+/* pipe.c */
+int 	ft_pipe(t_lexer **lexer);
 #endif
 

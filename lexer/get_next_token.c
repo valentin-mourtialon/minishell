@@ -6,7 +6,7 @@
 /*   By: vmourtia <vmourtia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:03:03 by vmourtia          #+#    #+#             */
-/*   Updated: 2023/01/19 15:59:12 by vmourtia         ###   ########.fr       */
+/*   Updated: 2023/01/30 14:21:05 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	is_separator(char c)
 
 int	is_special(char c)
 {
-	const int	specials[15]
-		= {'|', '>', '<', '"', '\n', '\'', '$',
+	const int	specials[16]
+		= {'=', '|', '>', '<', '"', '\n', '\'', '$',
 		'{', '}', '"', '\t', ' ', '\v', '\r', '\f'};
 	int			i;
 
