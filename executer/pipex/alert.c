@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_lexer.c                                       :+:      :+:    :+:   */
+/*   alert_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmourtia <vmourtia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 14:36:38 by vmourtia          #+#    #+#             */
-/*   Updated: 2023/01/19 14:32:08 by vmourtia         ###   ########.fr       */
+/*   Created: 2023/01/09 10:39:06 by vmourtia          #+#    #+#             */
+/*   Updated: 2023/01/19 10:01:36 by vmourtia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <lexer.h>
+#include <pipex.h>
 
-int	main(void)
+/*
+	There is no exit() in order to reproduce the true pipe
+	behavior, which runs all following commands even if
+	the input file is not found.
+*/
+void	error_msg(char *msg)
 {
-	char	*cmd;
-	char	*ptrstart;
-	t_lexer	*lexer;
+	perror(msg);
+}
 
-	signal(SIGINT, handle_sigquit);
-	signal(SIGQUIT, SIG_IGN);
-	while (1)
-	{
-		cmd = readline("lexer ");
-		if (!cmd)
-			break ;
-		ptrstart = cmd;
-		lexer = NULL;
-		while (*cmd)
-			get_next_token(&cmd, &lexer);
-		free(ptrstart);
-		print_token(lexer);
-	}
-	return (0);
+void	alert_msg(char *msg)
+{
+	write(2, msg, ft_strlen(msg));
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmourtia <vmourtia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sel-maar <sel-maar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:23:07 by vmourtia          #+#    #+#             */
-/*   Updated: 2023/01/31 16:52:09 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/02/06 16:35:48 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ typedef enum e_token_type {
 	T_QUOTE_SIMPLE,
 	T_QUOTE_DOUBLE,
 	T_WORD,
-	//block
-	B_SIMPLE,
 }	t_lexeren_type;
 
 /* main.c */

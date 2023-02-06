@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vmourtia <vmourtia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sel-maar <sel-maar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:25:09 by sel-maar          #+#    #+#             */
-/*   Updated: 2023/02/03 11:55:50 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/02/06 16:36:21 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@ typedef struct s_env {
 	struct s_env	*nextarg;
 
 } t_env;
+
+typedef enum e_block_type {
+	B_CMD,
+	B_HEREDOC,
+	B_INF,
+	B_SUP,
+	B_DOUBLSUP,
+} typeblock;
 
 /* parser.c */
 t_parser	*ft_parser(t_lexer **lexer, t_env **env);
@@ -73,6 +81,11 @@ int			sep(t_lexer **lexer, t_parser **parsert, t_env **env);
 /* word.c */
 int			word(t_lexer **lexer, t_parser **parser, t_env **env);
 
+/* inf.c */
+int			inf(t_lexer **lexer, t_parser **parser, t_env **env);
+
+/* sup.c */
+int			sup(t_lexer **lexer, t_parser **parser, t_env **env);
 /* pipe.c */
 int 	ft_pipe(t_lexer **lexer);
 #endif

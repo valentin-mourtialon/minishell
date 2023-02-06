@@ -3,14 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vmourtia <vmourtia@student.42.fr>          +#+  +:+       +#+         #
+#    By: sel-maar <sel-maar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/12 15:05:42 by sel-maar          #+#    #+#              #
-#    Updated: 2023/02/02 17:34:52 by sel-maar         ###   ########.fr        #
+#    Updated: 2023/02/06 15:51:21 by sel-maar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LEXER_SRCS =	lexer/findtoken/issimple.c \
+# SRCS
+
+SRCS_LEXER =	lexer/findtoken/issimple.c \
 				lexer/findtoken/isdouble.c \
 				lexer/findtoken/isword.c \
 				lexer/findtoken/ispipe.c \
@@ -23,11 +25,13 @@ LEXER_SRCS =	lexer/findtoken/issimple.c \
 				lexer/token.c \
 				lexer/signal.c \
 
-PARSER_SRCS = 	parser/parser.c \
+SRCS_PARSER = 	parser/parser.c \
 				parser/simplequote.c \
 				parser/doubleq.c \
 				parser/pipe.c \
 				parser/assignement.c \
+				parser/sup.c \
+				parser/inf.c \
 				parser/dollar.c \
 				parser/sep.c \
 				parser/word.c \
@@ -37,21 +41,46 @@ PARSER_SRCS = 	parser/parser.c \
 				parser/envmove.c \
 				main_parser.c \
 
-LIBFT_SRCS =	libft/ft_strlen.c \
+SRCS_LIBFT =	libft/ft_strlen.c \
 				libft/ft_strchr.c \
 				libft/ft_strjoin.c \
 				libft/strncmp.c \
 				libft/str_dup.c \
 
+SRCS_EXEC	 =	executer/pipex/main.c \
+				executer/pipex/pipex_strjoin.c \
+				executer/pipex/init.c \
+				executer/pipex/free.c \
+				executer/pipex/close.c \
+				executer/pipex/wait.c \
+				executer/pipex/child.c \
+				executer/pipex/alert.c \
+				executer/pipex/exit.c \
+				executer/pipex/handle_heredoc.c \
+				executer/pipex/multi_pipes.c \
+				executer/pipex/args.c \
+				executer/gnl/get_next_line.c \
+				executer/gnl/clear.c \
+				executer/gnl/extract.c \
+				executer/gnl/memory.c
+
+# OBJS
+
+OBJS_LIBFT =	${SRCS_LIBFT:c=o}
+
+OBJS_LEXER = 	${SRCS_LIBFT:c=o} ${SRCS_LEXER:c=o}
+
+OBJS_PARSER = 	${SRCS_LIBFT:c=o} ${SRCS_PARSER:c=o}
+
+OBJS_EXEC = 	${SRCS_LIBFT:c=o} ${SRCS_EXEC:c=o}
+
+OBJS = 			${OBJS_PARSER} ${SRCS_LEXER:c=o}
+
 INCLUDES = 		-I./includes
 
 NAME = 			minishell
 
-OBJS_LEXER = 	${LIBFT_SRCS:c=o} ${LEXER_SRCS:c=o}
-
-OBJS_PARSER = 	${LIBFT_SRCS:c=o} ${PARSER_SRCS:c=o}
-
-OBJS = 			${OBJS_PARSER} ${LEXER_SRCS:c=o}
+# OTHER VARIABLES
 
 CC = 			cc
 
@@ -63,8 +92,15 @@ VGRD = 			valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --sup
 
 RM =			rm -f
 
+# TARGETS
+
+%.o : %.c
+				${CC} ${CFLAGS} ${INCLUDES} -c $< -o $@ -g
+
 all :			${OBJS}
 				${CC} ${OBJS} -o ${NAME} ${READLINE}
+
+# LEXER
 
 lexer :			${OBJS_LEXER}
 				${CC} ${OBJS_LEXER} -o ${NAME} ${READLINE}
@@ -72,17 +108,21 @@ lexer :			${OBJS_LEXER}
 vglexer :		${OBJS_LEXER}
 				${VGRD} ${CC} ${OBJS_LEXER} -o ${NAME} ${READLINE}
 
+# PARSER
+
 parser :		${OBJS_PARSER} ${OBJS_LEXER} 
 				${CC} ${OBJS_PARSER} ${OBJS_LEXER} -o ${NAME} ${READLINE}
 
 vgparser :		${OBJS_PARSER}
 				${VGRD} ${CC} ${OBJS_PARSER} -o ${NAME} ${READLINE}
 
-%.o : %.c
-				${CC} ${CFLAGS} ${INCLUDES} -c $< -o $@ -g
+# EXECUTER
+
+executer:		$(OBJS_EXEC)
+				$(CC) $(OBJS_EXEC) -o $(NAME)
 
 clean :
-				${RM} ${OBJS}
+				${RM} ${OBJS} ${OBJS_EXEC} ${OBJS_PARSER} ${OBJS_LEXER}
 
 fclean :		clean
 				${RM} ${NAME}
@@ -93,4 +133,4 @@ relexer :		fclean lexer
 
 reparser :		fclean parser
 
-.PHONY :		all lexer parser clean fclean re
+.PHONY :		all lexer vglexer parser vgparser executer clean fclean re
