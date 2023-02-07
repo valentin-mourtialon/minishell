@@ -1,31 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sel-maar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/03 14:00:52 by sel-maar          #+#    #+#             */
-/*   Updated: 2023/02/07 11:29:07 by sel-maar         ###   ########.fr       */
+/*   Created: 2023/02/07 12:20:08 by sel-maar          #+#    #+#             */
+/*   Updated: 2023/02/07 12:23:58 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
-
-int pwd(void)
-{
-	char	buff[1024];
-		
-	if (getcwd(buff, sizeof(buff)))
-		printf("%s\n", buff);
-	else
-		return (perror("pwd failed"), 0);
-	return (1);
-}
-
-int	main()
-{
-	pwd();
-	return (0);
-}
+int echo(t_parser)

@@ -6,11 +6,14 @@
 /*   By: sel-maar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 14:02:09 by sel-maar          #+#    #+#             */
-/*   Updated: 2023/02/03 14:28:05 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/02/07 11:30:43 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUILTIN_H
 #define BUILTIN_H
 # include <parser.h>
+
+int	pwd(void);
+int	cd(void);
 #endif

@@ -6,7 +6,7 @@
 #    By: sel-maar <sel-maar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/12 15:05:42 by sel-maar          #+#    #+#              #
-#    Updated: 2023/02/06 15:51:21 by sel-maar         ###   ########.fr        #
+#    Updated: 2023/02/07 11:27:25 by sel-maar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,8 @@ SRCS_LIBFT =	libft/ft_strlen.c \
 				libft/strncmp.c \
 				libft/str_dup.c \
 
+SRCS_BUILT	 =	builtin/pwd.c \
+
 SRCS_EXEC	 =	executer/pipex/main.c \
 				executer/pipex/pipex_strjoin.c \
 				executer/pipex/init.c \
@@ -73,6 +75,8 @@ OBJS_LEXER = 	${SRCS_LIBFT:c=o} ${SRCS_LEXER:c=o}
 OBJS_PARSER = 	${SRCS_LIBFT:c=o} ${SRCS_PARSER:c=o}
 
 OBJS_EXEC = 	${SRCS_LIBFT:c=o} ${SRCS_EXEC:c=o}
+
+OBJS_EXEC = 	${SRCS_LIBFT:c=o} ${SRCS_BUILT:c=o}
 
 OBJS = 			${OBJS_PARSER} ${SRCS_LEXER:c=o}
 

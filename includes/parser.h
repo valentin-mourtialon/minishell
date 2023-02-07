@@ -6,7 +6,7 @@
 /*   By: sel-maar <sel-maar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:25:09 by sel-maar          #+#    #+#             */
-/*   Updated: 2023/02/06 16:36:21 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/02/07 17:22:03 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ typedef struct s_env {
 } t_env;
 
 typedef enum e_block_type {
+	B_CD,
+	B_PWD,
+	B_ECHO,
+	B_UNSET,
+	B_EXPORT,
+	B_ENV,
+	B_EXIT,
 	B_CMD,
 	B_HEREDOC,
 	B_INF,
