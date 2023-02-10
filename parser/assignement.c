@@ -6,12 +6,20 @@
 /*   By: sel-maar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 10:38:06 by sel-maar          #+#    #+#             */
-/*   Updated: 2023/02/02 14:17:11 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/02/10 14:45:10 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <parser.h>
 
+int	assignement(t_lexer **lexer, t_parser **parser, t_env **env)
+{
+	(void)env;
+	if ((*parser)->block >= B_EXIT && (*lexer)->previous && !(*lexer)->previous->previous)
+		(*parser)->block = B_ASSIGN;
+	*lexer = (*lexer)->next;
+	return (1);
+}
 int chearchenv(t_env **env, char *arg, char *argvalue)
 {
 	t_env	*index;
@@ -34,7 +42,7 @@ int chearchenv(t_env **env, char *arg, char *argvalue)
 	return (1);
 }
 
-int	assignement(t_lexer **lexer, t_parser **parser, t_env **env)
+/*int	assignement(t_lexer **lexer, t_parser **parser, t_env **env)
 {
 	t_lexer	*start;
 	t_env	*newarg;
@@ -62,4 +70,4 @@ int	assignement(t_lexer **lexer, t_parser **parser, t_env **env)
 	envaddbackarg(env, newarg);
 	print_envarg(*env);
 	return (1);
-}
+}*/

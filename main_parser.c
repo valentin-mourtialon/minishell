@@ -6,11 +6,12 @@
 /*   By: sel-maar <sel-maar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:36:38 by vmourtia          #+#    #+#             */
-/*   Updated: 2023/02/06 15:33:46 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/02/10 14:40:37 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <parser.h>
+#include "builtin/builtin.h"
 
 int	main(int ac, char **av, char **env)
 {
@@ -42,11 +43,13 @@ int	main(int ac, char **av, char **env)
 		printf("\n\n--------------------------\n\n");
 
 		parser = ft_parser(&lexer, &listenv);
-		print_block(parser);
 		if (parser)
-			freeblock(parser);
-		if (ptrstart)
-			free(ptrstart);
+		{
+		print_block(parser);
+//		echo(&parser);
+		freeblock(parser);
+		free(ptrstart);
+		}
 	}
 	return (0);
 }

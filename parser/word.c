@@ -6,7 +6,7 @@
 /*   By: sel-maar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 14:28:22 by sel-maar          #+#    #+#             */
-/*   Updated: 2023/02/07 17:34:15 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/02/10 14:49:59 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ int	isbuilt(char *str)
 int	word(t_lexer **lexer, t_parser **parser, t_env **env)
 {
 	(void)env;
-	if (!(*lexer)->previous)
+	if (!(*lexer)->previous && !(*lexer)->next)
+		(*parser)->block = isbuilt((*lexer)->str);
+
+	else if (!(*lexer)->previous && (*lexer)->next->token != T_ASSIGNMENT)
 		(*parser)->block = isbuilt((*lexer)->str);
 	*lexer = (*lexer)->next;
 	return (1);

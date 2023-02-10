@@ -6,7 +6,7 @@
 /*   By: sel-maar <sel-maar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:02:44 by sel-maar          #+#    #+#             */
-/*   Updated: 2023/02/06 16:38:20 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/02/08 12:31:52 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	init_tab_parser(int	(**tab)(t_lexer **, t_parser **,t_env **))
 {
 	tab[0] = &inf;
 	tab[1] = &sup;
+	tab[2] = NULL;
 	tab[3] = &assignement;
 	tab[4] = &sep;
 	tab[5] = &dollar;

@@ -6,7 +6,7 @@
 /*   By: sel-maar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:15:15 by sel-maar          #+#    #+#             */
-/*   Updated: 2023/02/03 11:38:14 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/02/08 12:37:05 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	replace(t_lexer **start, t_lexer **lexer, t_parser **parser, char *cmd)
 	t_lexer *token;
 	t_lexer	*tmp;
 
-	token = newtoken(T_WORD, cmd);
+	token = newtoken(T_QUOTE_SIMPLE, cmd);
 	if (!token)
 		return (0);
 	if ((*start)->previous)

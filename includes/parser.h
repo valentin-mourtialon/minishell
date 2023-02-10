@@ -6,7 +6,7 @@
 /*   By: sel-maar <sel-maar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 12:25:09 by sel-maar          #+#    #+#             */
-/*   Updated: 2023/02/07 17:22:03 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/02/08 12:20:31 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ typedef enum e_block_type {
 	B_CD,
 	B_PWD,
 	B_ECHO,
-	B_UNSET,
+	B_ASSIGN,
 	B_EXPORT,
+	B_UNSET,
 	B_ENV,
 	B_EXIT,
 	B_CMD,

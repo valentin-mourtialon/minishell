@@ -6,7 +6,7 @@
 /*   By: sel-maar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 16:22:34 by sel-maar          #+#    #+#             */
-/*   Updated: 2023/02/06 12:02:04 by sel-maar         ###   ########.fr       */
+/*   Updated: 2023/02/10 12:20:16 by sel-maar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int			dollar(t_lexer **lexer, t_parser **parser, t_env **env)
 	*lexer = (*lexer)->next;
 	len = ft_strlen((*lexer)->str);
 	if (start->next->token !=T_WORD)
-		return (0);
+		return (1);
 	while (index && ft_strncmp(index->str, (*lexer)->str, len))
 		index = index->nextarg;
 	if (!index)
